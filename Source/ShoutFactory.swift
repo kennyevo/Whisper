@@ -100,13 +100,18 @@ open class ShoutView: UIView {
       backgroundView.addSubview($0)
     }
 
-    clipsToBounds = false
+    if let cornerRadius = ShoutView.cornerRadius {
+        clipsToBounds = true
+        layer.cornerRadius = cornerRadius
+    }else{
+        clipsToBounds = false
+    }
     isUserInteractionEnabled = true
     layer.shadowColor = ShoutView.shadowColor ?? UIColor.black.cgColor
     layer.shadowOffset = ShoutView.shadowOffset ?? CGSize(width: 0, height: 0.5)
     layer.shadowOpacity = ShoutView.shadowOpacity ?? 0.1
     layer.shadowRadius = ShoutView.shadowRadius ?? 0.5
-    layer.cornerRadius = ShoutView.cornerRadius ?? 0.0
+    
 
     backgroundView.addGestureRecognizer(tapGestureRecognizer)
     addGestureRecognizer(panGestureRecognizer)
