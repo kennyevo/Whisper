@@ -80,6 +80,14 @@ open class ShoutView: UIView {
 
   private var subtitleLabelOriginalHeight: CGFloat = 0
   private var internalHeight: CGFloat = 0
+    
+    //MARK: - Customisation
+    
+    public static var cornerRadius: CGFloat?
+    public static var shadowColor: CGColor?
+    public static var shadowOffset: CGSize?
+    public static var shadowOpacity: Float?
+    public static var shadowRadius: CGFloat?
 
   // MARK: - Initializers
 
@@ -94,10 +102,11 @@ open class ShoutView: UIView {
 
     clipsToBounds = false
     isUserInteractionEnabled = true
-    layer.shadowColor = UIColor.black.cgColor
-    layer.shadowOffset = CGSize(width: 0, height: 0.5)
-    layer.shadowOpacity = 0.1
-    layer.shadowRadius = 0.5
+    layer.shadowColor = ShoutView.shadowColor ?? UIColor.black.cgColor
+    layer.shadowOffset = ShoutView.shadowOffset ?? CGSize(width: 0, height: 0.5)
+    layer.shadowOpacity = ShoutView.shadowOpacity ?? 0.1
+    layer.shadowRadius = ShoutView.shadowRadius ?? 0.5
+    layer.cornerRadius = ShoutView.cornerRadius ?? 0.0
 
     backgroundView.addGestureRecognizer(tapGestureRecognizer)
     addGestureRecognizer(panGestureRecognizer)
