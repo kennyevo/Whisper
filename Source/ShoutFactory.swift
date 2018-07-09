@@ -18,6 +18,7 @@ open class ShoutView: UIView {
     view.backgroundColor = ColorList.Shout.background
     view.alpha = 0.98
     view.clipsToBounds = true
+    view.layer.cornerRadius = ShoutView.cornerRadius ?? 0.0
 
     return view
     }()
