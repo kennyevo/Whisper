@@ -11,6 +11,8 @@ open class ShoutView: UIView {
     public static let imageOffset: CGFloat = 18
     public static var textOffset: CGFloat = 75
     public static var touchOffset: CGFloat = 40
+    public static var verticalPadding: CGFloat = 0
+    public static var horizontalPadding: CGFloat = 0
   }
 
   open fileprivate(set) lazy var backgroundView: UIView = {
@@ -94,6 +96,8 @@ open class ShoutView: UIView {
 
   public override init(frame: CGRect) {
     super.init(frame: frame)
+    
+    bounds = frame.insetBy(dx: Dimensions.horizontalPadding, dy: Dimensions.verticalPadding)
 
     addSubview(backgroundView)
     [imageView, titleLabel, subtitleLabel, indicatorView].forEach {
